@@ -5,7 +5,7 @@ using DivingLogs.Data;
 
 namespace DivingLogs.Controller
 {   
-    [Route("api/diving")]
+    [Route("api/divings")]
     [ApiController]
     public class DivingLogController : ControllerBase
     {
@@ -20,7 +20,7 @@ namespace DivingLogs.Controller
         [HttpGet]
         public ActionResult <IEnumerable<DivingLog>> GetAllDivingLog()
         {
-            var divingItems = _repository.GetAppDivings();
+            var divingItems = _repository.GetAllDivings();
             return Ok(divingItems);
         }
         // Get api/DivingLogs/0

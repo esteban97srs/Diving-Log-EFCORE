@@ -5,7 +5,7 @@ namespace DivingLogs.Data
 {
     public class MockDivingLogRepo : IDivingLogRepo
     {
-        public IEnumerable<DivingLog> GetAppDivings()
+        public IEnumerable<DivingLog> GetAllDivings()
         {
             var divings = new List <DivingLog>
             {

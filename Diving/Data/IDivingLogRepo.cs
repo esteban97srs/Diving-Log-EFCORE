@@ -5,7 +5,7 @@ namespace DivingLogs.Data
 {
     public interface IDivingLogRepo
     {
-        IEnumerable<DivingLog> GetAppDivings();
+        IEnumerable<DivingLog> GetAllDivings();
         DivingLog GetDivingLogById(int id);
     }
 }   
