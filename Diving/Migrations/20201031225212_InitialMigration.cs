@@ -12,13 +12,13 @@ namespace Diving_Log.Migrations
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    date_log = table.Column<string>(nullable: true),
-                    wind_direction = table.Column<string>(nullable: true),
-                    surface_current = table.Column<string>(nullable: true),
-                    diving_permit = table.Column<string>(nullable: true),
-                    wave_height = table.Column<string>(nullable: true),
-                    divers_number = table.Column<string>(nullable: true),
-                    observations = table.Column<string>(nullable: true)
+                    date_log = table.Column<string>(nullable: false),
+                    wind_direction = table.Column<string>(nullable: false),
+                    surface_current = table.Column<string>(nullable: false),
+                    diving_permit = table.Column<string>(nullable: false),
+                    wave_height = table.Column<string>(nullable: false),
+                    divers_number = table.Column<string>(nullable: false),
+                    observations = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
