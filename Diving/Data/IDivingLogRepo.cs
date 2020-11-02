@@ -12,5 +12,9 @@ namespace DivingLogs.Data
         DivingLog GetDivingLogById(int id);
 
         void CreateDivingLog(DivingLog dl);
+
+        void UpdateDivingLog(DivingLog dl);
+
+        void DeleteDivingLog(DivingLog dl);
     }
 }   

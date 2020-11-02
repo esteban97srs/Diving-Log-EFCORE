@@ -12,7 +12,8 @@ namespace DivingLogs.Data
 
         protected  override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new DivingLogConfiguration()); // Aplicando la configuracion del archivo Fluent API
+            modelBuilder.ApplyConfiguration(new DivingLogConfiguration()); // Aplicando la configuracion del archivo Fluent API para entidad DIVINGLOG
         }
+        
     }
 }

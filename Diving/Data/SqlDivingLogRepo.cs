@@ -22,6 +22,14 @@ namespace DivingLogs.Data
             _context.Divings.Add(dl);
         }
 
+        public void DeleteDivingLog(DivingLog dl)
+        {
+            if(dl == null){
+                throw new ArgumentNullException(nameof(dl));
+            }
+            _context.Divings.Remove(dl);
+        }
+
         public IEnumerable<DivingLog> GetAllDivings()  //retorna datos de la BD en una lista
         {
             return _context.Divings.ToList();
@@ -35,6 +43,10 @@ namespace DivingLogs.Data
         public bool SaveChanges()
         {
             return (_context.SaveChanges() >= 0);
+        }
+
+        public void UpdateDivingLog(DivingLog dl)
+        {
         }
     }
 }
