@@ -5,10 +5,10 @@ namespace DivingLogs.Data
 {
     public interface IDivingLogRepo
     {
-
         bool SaveChanges();
-
+        
         IEnumerable<DivingLog> GetAllDivings();
+
         DivingLog GetDivingLogById(int id);
 
         void CreateDivingLog(DivingLog dl);

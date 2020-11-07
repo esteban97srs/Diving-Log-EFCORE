@@ -2,7 +2,7 @@
 
 namespace Diving_Log.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,13 +12,13 @@ namespace Diving_Log.Migrations
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    date_log = table.Column<string>(maxLength: 10, nullable: false),
-                    wind_direction = table.Column<string>(maxLength: 50, nullable: false),
-                    surface_current = table.Column<string>(maxLength: 10, nullable: false),
-                    diving_permit = table.Column<string>(maxLength: 30, nullable: false),
-                    wave_height = table.Column<string>(maxLength: 5, nullable: false),
-                    divers_number = table.Column<string>(maxLength: 5, nullable: false),
-                    observations = table.Column<string>(maxLength: 200, nullable: false)
+                    DateLog = table.Column<string>(maxLength: 15, nullable: false),
+                    WindDirection = table.Column<string>(maxLength: 50, nullable: false),
+                    SurfaceCurrent = table.Column<string>(maxLength: 50, nullable: false),
+                    DivingPermit = table.Column<string>(maxLength: 50, nullable: false),
+                    WaveHeight = table.Column<string>(maxLength: 5, nullable: false),
+                    DiversNumber = table.Column<string>(maxLength: 5, nullable: false),
+                    Observations = table.Column<string>(maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {

@@ -4,10 +4,13 @@ using DivingLogs.Models;
 using DivingLogs.Data;
 using AutoMapper;
 using DivingLogs.Dtos;
+using Microsoft.AspNetCore.Cors;
 
-namespace DivingLogs.Controller
-{   
-    [Route("api/divings")]
+namespace DivingLogs.Controller{
+
+    [Route("api/divings/")]
+    [EnableCors("MyPolicy")]
+    [Produces("application/json")]
     [ApiController]
     public class DivingLogController : ControllerBase
     {
@@ -20,7 +23,6 @@ namespace DivingLogs.Controller
             _mapper = mapper;
         }
        //----------------------------------------------------------------------------------------
-       
         // GET api/divings
         [HttpGet]
         public ActionResult <IEnumerable<DivingLogReadDto>> GetAllDivingLog()
@@ -37,27 +39,22 @@ namespace DivingLogs.Controller
             var divingItem = _repository.GetDivingLogById(id);
             if (divingItem != null){
                 return Ok(_mapper.Map<DivingLogReadDto>(divingItem));
-            }   
+            }
             return NotFound();
         }
         //----------------------------------------------------------------------------------------
-
         // POST api/divings/
         [HttpPost]
-        public ActionResult <DivingLogReadDto> createDivingLog(DivingLogCreateDto divingLogCreateDto)
+        public ActionResult <DivingLogReadDto> CreateDivingLog(DivingLogCreateDto divingLogCreateDto)
         {
             var divingModel = _mapper.Map<DivingLog>(divingLogCreateDto);
-            if(divingModel == null){
-                return NoContent();
-            }
             _repository.CreateDivingLog(divingModel);
             _repository.SaveChanges();
-            var divingLogReadDto = _mapper.Map <DivingLogReadDto>(divingModel);    
+            var divingLogReadDto = _mapper.Map <DivingLogReadDto>(divingModel);                
             return CreatedAtRoute(nameof(GetDivingLogById), new {Id = divingLogReadDto}, divingLogReadDto);
-        }
 
-        //----------------------------------------------------------------------------------------
-        
+        }
+        //----------------------------------------------------------------------------------------        
         // PUT api/divings/{id}
 
         [HttpPut("{id}")]
@@ -74,11 +71,9 @@ namespace DivingLogs.Controller
             return NoContent();
         }
         //----------------------------------------------------------------------------------------
-
         // Delete api/divings/{id}
         [HttpDelete("{id}")]
-        public ActionResult DeleteDivingLog(int id,DivingLogDeleteDto divingLogDeleteDto){
-        
+        public ActionResult DeleteDivingLog(int id){
             var divingModelFromRepo = _repository.GetDivingLogById(id);
             if(divingModelFromRepo == null){
                 return NotFound();

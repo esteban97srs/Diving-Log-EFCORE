@@ -1,20 +1,21 @@
 namespace DivingLogs.Dtos
 {
     public class DivingLogReadDto{
+        
         public int id { get; set; }
 
-        public string date_log { get; set; }
+        public string DateLog { get; set; }
 
-        public string wind_direction { get; set; }
+        public string WindDirection { get; set; }
 
-        public string surface_current { get; set; }
+        public string SurfaceCurrent { get; set; }
 
-        public string diving_permit { get; set; }
+        public string DivingPermit { get; set; }
 
-        public string wave_height { get; set; }
+        public string WaveHeight { get; set; }
         
-        public string divers_number { get; set; }
+        public string DiversNumber { get; set; }
     
-        public string observations { get; set; }
+        public string Observations { get; set; }
     }
 }

@@ -1,0 +1,35 @@
+<div>
+    <button type="button" style="margin-left: 10px;" class="btn btn-primary" routerLink="/Create"> Nuevo Registro</button>
+</div>
+<br>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fecha de Registro</th>
+            <th>Dirección del Viento</th>
+            <th>Corriente Superficial</th>
+            <th>Permiso de Buceo</th>
+            <th>Altura Ola</th>
+            <th>Nº Buzos</th>
+            <th>Observaciones</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let dataItem of DivingList">
+            <td>{{dataItem.id}}</td>
+            <td>{{dataItem.dateLog}}</td>
+            <td>{{dataItem.windDirection}}</td>
+            <td>{{dataItem.surfaceCurrent}}</td>
+            <td>{{dataItem.divingPermit}}</td>
+            <td>{{dataItem.waveHeight}}</td>
+            <td>{{dataItem.diversNumber}}</td>
+            <td>{{dataItem.observations}}</td>
+            <td>
+                <button type="button" class="btn btn-success">Editar</button>
+                <button type="button" class="btn btn-danger" (click) = "DeleteDivingLog(dataItem)">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

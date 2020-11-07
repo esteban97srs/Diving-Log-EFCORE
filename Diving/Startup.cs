@@ -18,13 +18,20 @@ namespace Diving_Log
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+
         public void ConfigureServices(IServiceCollection services)
         {
-           services.AddDbContext<DivingLogContext>(opt => opt.UseSqlServer
+            services.AddMvc(setup => {});
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+       {
+           builder.AllowAnyOrigin()
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+       }));
+            services.AddDbContext<DivingLogContext>(opt => opt.UseSqlServer
             (Configuration.GetConnectionString("DivingConnection")));
 
             services.AddControllers();
@@ -41,11 +48,9 @@ namespace Diving_Log
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
+            app.UseCors("MyPolicy");
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
