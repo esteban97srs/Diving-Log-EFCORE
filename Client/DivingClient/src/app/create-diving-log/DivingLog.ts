@@ -1,6 +1,5 @@
 export class DivingLogCreate {
-    
-  DateLog:string;
+    DateLog:string;
     WindDirection:string;
     SurfaceCurrent:string;
     DivingPermit:string;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SharedService} from 'src/app/shared.service';
+import { DivingLogCreate } from '../create-diving-log/DivingLog';
 
 @Component({
   selector: 'app-diving-log',
@@ -9,13 +10,12 @@ import {SharedService} from 'src/app/shared.service';
 export class DivingLogComponent implements OnInit {
 
   constructor(private service:SharedService) { }
-
   DivingList:any=[];
+  diving:DivingLogCreate = new DivingLogCreate();
 
   ngOnInit(): void {
     this.refreshDivingList();
   }
-
 
   DeleteDivingLog(item){
     if(confirm("Seguro quieres eliminar el registro : "+item.id+"?")){
@@ -23,9 +23,8 @@ export class DivingLogComponent implements OnInit {
       this.service.DeleteDivingLog(val).subscribe(data => {
         alert(data.toString());
       })
-
+      window.location.reload();
     }
-    window.location.reload();
   }
 
 

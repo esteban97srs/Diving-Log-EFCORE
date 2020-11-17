@@ -11,10 +11,11 @@ import {DivingLogCreate} from './DivingLog';
 export class CreateDivingLogComponent implements OnInit {
   
   constructor(private service:SharedService) {} // Implementando el servicio para enviar las peticiones a la api
-
+  
   diving:DivingLogCreate = new DivingLogCreate();
 
   ngOnInit(): void {
+    
   }
 
   CreateDivingLog(){
@@ -22,7 +23,6 @@ export class CreateDivingLogComponent implements OnInit {
     this.diving.WaveHeight = this.diving.WaveHeight.toString();
     this.service.CreateDivingLog(this.diving).subscribe(data =>{
       console.log(data)
-      alert("Guardado correctamente");
       window.location.reload();
      })
     };

@@ -26,7 +26,7 @@ namespace DivingLogs.Controller{
         // GET api/divings
         [HttpGet]
         public ActionResult <IEnumerable<DivingLogReadDto>> GetAllDivingLog()
-        {
+        {          
             var divingItems = _repository.GetAllDivings();
             return Ok(_mapper.Map<IEnumerable<DivingLogReadDto>>(divingItems));
         }
@@ -47,12 +47,15 @@ namespace DivingLogs.Controller{
         [HttpPost]
         public ActionResult <DivingLogReadDto> CreateDivingLog(DivingLogCreateDto divingLogCreateDto)
         {
-            var divingModel = _mapper.Map<DivingLog>(divingLogCreateDto);
-            _repository.CreateDivingLog(divingModel);
-            _repository.SaveChanges();
-            var divingLogReadDto = _mapper.Map <DivingLogReadDto>(divingModel);                
-            return CreatedAtRoute(nameof(GetDivingLogById), new {Id = divingLogReadDto}, divingLogReadDto);
-
+            if (ModelState.IsValid)
+            {
+                var divingModel = _mapper.Map<DivingLog>(divingLogCreateDto);
+                _repository.CreateDivingLog(divingModel);
+                _repository.SaveChanges();
+                var divingLogReadDto = _mapper.Map<DivingLogReadDto>(divingModel);
+                return CreatedAtRoute(nameof(GetDivingLogById), new { Id = divingLogReadDto }, divingLogReadDto);
+            }
+            return BadRequest(ModelState);
         }
         //----------------------------------------------------------------------------------------        
         // PUT api/divings/{id}
@@ -61,10 +64,6 @@ namespace DivingLogs.Controller{
         public ActionResult UpdateDivingLog(int id, DivingLogUpdateDto divingLogUpdateDto){
 
             var divingModelFromRepo = _repository.GetDivingLogById(id);
-            if(divingModelFromRepo == null)
-            {                   
-                return NotFound();
-            }
             _mapper.Map(divingLogUpdateDto, divingModelFromRepo);
             _repository.UpdateDivingLog(divingModelFromRepo);
             _repository.SaveChanges();

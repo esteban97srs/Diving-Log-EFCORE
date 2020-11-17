@@ -1,6 +1,11 @@
 using System;
 using AutoMapper;
+using Diving_Log.Data.Configurations;
 using DivingLogs.Data;
+using DivingLogs.Dtos;
+using DivingLogs.Models;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 
@@ -30,11 +35,14 @@ namespace Diving_Log
            builder.AllowAnyOrigin()
                   .AllowAnyMethod()
                   .AllowAnyHeader();
+
        }));
             services.AddDbContext<DivingLogContext>(opt => opt.UseSqlServer
             (Configuration.GetConnectionString("DivingConnection")));
 
-            services.AddControllers();
+            services.AddControllers().AddFluentValidation();
+            services.AddTransient <IValidator <DivingLogCreateDto>,DivingValidator>();
+
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped <IDivingLogRepo, SqlDivingLogRepo>();
         }

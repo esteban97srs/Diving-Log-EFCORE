@@ -3,10 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { DivingLogComponent } from './diving-log/diving-log.component';
 import { CreateDivingLogComponent } from './create-diving-log/create-diving-log.component';
+import { EditDivingLogComponent } from './edit-diving-log/edit-diving-log.component';
 
 const routes: Routes = [
   { path:'',component:DivingLogComponent},
-  { path: 'Create', component: CreateDivingLogComponent}
+  { path: 'DivingCreate', component: CreateDivingLogComponent},
+  { path: 'DivingUpdate/:id', component: EditDivingLogComponent}
+
 
 ];
 @NgModule({

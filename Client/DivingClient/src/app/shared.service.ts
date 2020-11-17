@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {DivingLogCreate} from './create-diving-log/DivingLog';
+import { DivingLogPut } from './edit-diving-log/DivingLogPut';
 
 
 @Injectable({
@@ -15,11 +16,16 @@ export class SharedService {
   GetAllDivingLog(): Observable<any[]>{
     return this.http.get<any>(this.APIurl);
   }
-  CreateDivingLog(diving:DivingLogCreate): Observable<any> {
-    return this.http.post(this.APIurl,diving);
+  GetDivingLogById(diving: DivingLogPut): Observable<any>{
+    var direction = this.APIurl + diving;
+    return this.http.get(direction);
   }
-  UpdateDivingLog(val:any){
-    return this.http.put(this.APIurl,val);
+  CreateDivingLog(diving:DivingLogCreate): Observable<any> {
+    return this.http.post(this.APIurl, diving);
+  }
+  UpdateDivingLog(diving:DivingLogPut) : Observable<any> {
+    var id = diving.id;
+    return this.http.put(this.APIurl+id,diving);
   }
   DeleteDivingLog(val:any){
     return this.http.delete(this.APIurl+val);
