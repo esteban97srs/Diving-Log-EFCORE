@@ -47,27 +47,22 @@ namespace DivingLogs.Controller{
         [HttpPost]
         public ActionResult <DivingLogReadDto> CreateDivingLog(DivingLogCreateDto divingLogCreateDto)
         {
-            if (ModelState.IsValid)
-            {
-                var divingModel = _mapper.Map<DivingLog>(divingLogCreateDto);
-                _repository.CreateDivingLog(divingModel);
-                _repository.SaveChanges();
-                var divingLogReadDto = _mapper.Map<DivingLogReadDto>(divingModel);
-                return CreatedAtRoute(nameof(GetDivingLogById), new { Id = divingLogReadDto }, divingLogReadDto);
-            }
-            return BadRequest(ModelState);
+            var divingModel = _mapper.Map<DivingLog>(divingLogCreateDto);
+            _repository.CreateDivingLog(divingModel);
+            _repository.SaveChanges();
+            var divingLogReadDto = _mapper.Map<DivingLogReadDto>(divingModel);
+            return CreatedAtRoute(nameof(GetDivingLogById), new { Id = divingLogReadDto }, divingLogReadDto);
         }
         //----------------------------------------------------------------------------------------        
         // PUT api/divings/{id}
 
         [HttpPut("{id}")]
-        public ActionResult UpdateDivingLog(int id, DivingLogUpdateDto divingLogUpdateDto){
-
+        public ActionResult <DivingLogReadDto> UpdateDivingLog(int id, DivingLogUpdateDto divingLogUpdateDto){
             var divingModelFromRepo = _repository.GetDivingLogById(id);
             _mapper.Map(divingLogUpdateDto, divingModelFromRepo);
             _repository.UpdateDivingLog(divingModelFromRepo);
             _repository.SaveChanges();
-            return NoContent();
+            return Ok();
         }
         //----------------------------------------------------------------------------------------
         // Delete api/divings/{id}
@@ -79,7 +74,7 @@ namespace DivingLogs.Controller{
             }
             _repository.DeleteDivingLog(divingModelFromRepo);
             _repository.SaveChanges();
-            return NoContent();            
+            return Ok();
         }
     }
 }

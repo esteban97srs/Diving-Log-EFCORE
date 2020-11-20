@@ -9,8 +9,6 @@ const routes: Routes = [
   { path:'',component:DivingLogComponent},
   { path: 'DivingCreate', component: CreateDivingLogComponent},
   { path: 'DivingUpdate/:id', component: EditDivingLogComponent}
-
-
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

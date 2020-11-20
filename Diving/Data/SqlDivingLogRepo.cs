@@ -47,6 +47,7 @@ namespace DivingLogs.Data
 
         public void UpdateDivingLog(DivingLog dl)
         {
+            
         }
     }
 }

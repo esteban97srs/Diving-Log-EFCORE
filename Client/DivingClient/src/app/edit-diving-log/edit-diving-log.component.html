@@ -1,13 +1,13 @@
 <section>
-  <form>
+  <form [formGroup] = "EditForm">
     <div class="form-row col-md-10">
       <div class="form-group col-md-3">
         <label for="DateLog">Fecha De Registro</label>
-        <input type="Date" class="form-control" required [(ngModel)]="divingForm.dateLog" [ngModelOptions]="{standalone: true}">
+        <input type="Date"  formControlName="DateLog" name="DateLog" class="form-control" required [(ngModel)]="divingForm.dateLog" [ngModelOptions]="{standalone: true}">
       </div>
       <div class="form-group col-md-3">
         <label for="DivingPermit">Permiso de Buceo</label>
-        <select type="text" class="form-control" required [(ngModel)]="divingForm.divingPermit" [ngModelOptions]="{standalone: true}">
+        <select type="text"  formControlName="DivingPermit" name="DivingPermit" class="form-control" required [(ngModel)]="divingForm.divingPermit" [ngModelOptions]="{standalone: true}">
           <option selected>Todas</option>
         </select>
       </div>
@@ -15,32 +15,32 @@
     <div class="form-row col-md-10">
       <div class="form-group col-md-4">
         <label for="WindDirection">Direccion del Viento(ND)</label>
-        <input type="date " class="form-control" required [(ngModel)]="divingForm.windDirection" [ngModelOptions]="{standalone: true}">
+        <input type="text" formControlName="WindDirection" name="WindDirection" class="form-control" required [(ngModel)]="divingForm.windDirection" [ngModelOptions]="{standalone: true}">
       </div>
       <div class="form-group col-md-2">
         <label for="text">Altura Ola(M)</label>
-        <input type="number" class="form-control" required [(ngModel)]="divingForm.waveHeight" [ngModelOptions]="{standalone: true}">
+        <input type="number" formControlName="WaveHeight" name="WaveHeight" class="form-control" required [(ngModel)]="divingForm.waveHeight" [ngModelOptions]="{standalone: true}">
       </div>
     </div>
     <div class="form-row col-md-10">
       <div class="form-group col-md-4">
         <label for="text">Corriente Superficial(ND)</label>
-        <input type="text" class="form-control" required [(ngModel)]="divingForm.surfaceCurrent" [ngModelOptions]="{standalone: true}">
+        <input type="number" formControlName="SurfaceCurrent" name="SurfaceCurrent" class="form-control" required [(ngModel)]="divingForm.surfaceCurrent" [ngModelOptions]="{standalone: true}">
       </div>
       <div class="form-group col-md-2">
         <label for="text">Numero de Buzos</label>
-        <input type="number" class="form-control" required [(ngModel)]="divingForm.diversNumber" [ngModelOptions]="{standalone: true}">
+        <input type="number" formControlName="DiversNumber" name="DiversNumber" class="form-control" required [(ngModel)]="divingForm.diversNumber" [ngModelOptions]="{standalone: true}">
       </div>
     </div>
     <div class="form-row col-md-10">
       <div class="form-group col-md-6">
         <label for="text">Observaciones</label>
-        <textarea type="text" class="form-control" required [(ngModel)]="divingForm.observations" [ngModelOptions]="{standalone: true}"></textarea>
+        <textarea type="text" formControlName="Observations" name="Observations" class="form-control" required [(ngModel)]="divingForm.observations" [ngModelOptions]="{standalone: true}"></textarea>
       </div>
     </div>
     <div class="form-row col-10">
       <div class="form-group">
-        <button (click)="UpdateDivingLog()" routerLink="" class="btn btn-success">Actualizar</button>
+        <button [disabled] = "!EditForm.valid" (click)="UpdateDivingLog()"  class="btn btn-success">Actualizar</button>
       </div>
       <div class="form-group col-md-1">
         <button routerLink="" class="btn btn-dark">Atrás</button>

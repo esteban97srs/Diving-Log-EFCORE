@@ -21,7 +21,7 @@ export class SharedService {
     return this.http.get(direction);
   }
   CreateDivingLog(diving:DivingLogCreate): Observable<any> {
-    return this.http.post(this.APIurl, diving);
+    return this.http.post(this.APIurl, diving);      
   }
   UpdateDivingLog(diving:DivingLogPut) : Observable<any> {
     var id = diving.id;
