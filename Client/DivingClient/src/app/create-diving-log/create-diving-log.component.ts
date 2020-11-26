@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 import { DivingLogCreate } from './DivingLog';
-import {Validators, FormControl, FormBuilder} from '@angular/forms';
+import {Validators, FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-create-diving-log',
@@ -9,7 +9,8 @@ import {Validators, FormControl, FormBuilder} from '@angular/forms';
   styleUrls: ['./create-diving-log.component.css']
 })
 export class CreateDivingLogComponent implements OnInit {
-  CreateForm = this.fb.group({
+  
+  CreateForm =  new FormGroup({
     DateLog: new FormControl('', [Validators.required]),
     WindDirection: new FormControl('', [Validators.required]),
     WaveHeight: new FormControl('', [Validators.required]),
@@ -18,9 +19,8 @@ export class CreateDivingLogComponent implements OnInit {
     DivingPermit: new FormControl('', [Validators.required]),
     Observations: new FormControl('', [Validators.required])
   });
-
   
-  constructor(private service:SharedService, private fb: FormBuilder) {} // Implementando el servicio para enviar las peticiones a la api
+  constructor(private service:SharedService) {} // Implementando el servicio para enviar las peticiones a la api
   diving:DivingLogCreate = new DivingLogCreate();
 
   ngOnInit(){}

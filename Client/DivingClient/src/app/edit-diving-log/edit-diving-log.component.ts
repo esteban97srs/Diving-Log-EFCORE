@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../shared.service';
 import { DivingLogPut } from './DivingLogPut';
 import { ActivatedRoute } from '@angular/router';
-import {Validators, FormControl, FormBuilder} from '@angular/forms';
+import {Validators, FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-edit-diving-log',
@@ -10,7 +10,8 @@ import {Validators, FormControl, FormBuilder} from '@angular/forms';
   styleUrls: ['./edit-diving-log.component.css']
 })
 export class EditDivingLogComponent implements OnInit {
-  EditForm = this.fb.group({
+ 
+    EditForm = new FormGroup({
     DateLog: new FormControl('', [Validators.required]),
     WindDirection: new FormControl('', [Validators.required]),
     WaveHeight: new FormControl('', [Validators.required]),
@@ -20,9 +21,7 @@ export class EditDivingLogComponent implements OnInit {
     Observations: new FormControl('', [Validators.required])
   });
 
-
-
-  constructor(private service: SharedService, private rutaActiva: ActivatedRoute,  private fb: FormBuilder) { }
+  constructor(private service: SharedService, private rutaActiva: ActivatedRoute) { }
   divingForm:DivingLogPut = new DivingLogPut();
 
   ngOnInit() {
