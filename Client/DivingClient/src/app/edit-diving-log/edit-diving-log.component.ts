@@ -13,12 +13,12 @@ export class EditDivingLogComponent implements OnInit {
  
     EditForm = new FormGroup({
     DateLog: new FormControl('', [Validators.required]),
-    WindDirection: new FormControl('', [Validators.required]),
+    WindDirection: new FormControl('', [Validators.required,Validators.maxLength(15)]),
     WaveHeight: new FormControl('', [Validators.required]),
     SurfaceCurrent: new FormControl('', [Validators.required]),
     DiversNumber: new FormControl('', [Validators.required]),
     DivingPermit: new FormControl('', [Validators.required]),
-    Observations: new FormControl('', [Validators.required])
+    Observations: new FormControl('', [Validators.required,Validators.maxLength(35)])
   });
 
   constructor(private service: SharedService, private rutaActiva: ActivatedRoute) { }
