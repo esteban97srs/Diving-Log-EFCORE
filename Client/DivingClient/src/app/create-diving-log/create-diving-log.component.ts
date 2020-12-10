@@ -32,7 +32,6 @@ export class CreateDivingLogComponent implements OnInit {
       this.service.CreateDivingLog(this.diving).subscribe(data =>{
       alert("Guardado");
       window.location.reload();
-
     })
   }
 }
