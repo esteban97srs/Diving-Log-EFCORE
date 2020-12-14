@@ -9,7 +9,6 @@ import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { CreateDivingLogComponent } from './create-diving-log/create-diving-log.component';    
 import { RouterModule } from '@angular/router';
 import { EditDivingLogComponent } from './edit-diving-log/edit-diving-log.component';
-import { environment } from '../environments/environment';
 
 
 @NgModule({
