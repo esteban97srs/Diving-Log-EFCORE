@@ -2,7 +2,7 @@
 
 namespace Diving_Log.Migrations
 {
-    public partial class newMigration : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

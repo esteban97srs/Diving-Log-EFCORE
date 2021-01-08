@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Diving_Log.Migrations
 {
     [DbContext(typeof(DivingLogContext))]
-    [Migration("20210107191504_newMigration")]
-    partial class newMigration
+    [Migration("20210107192357_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
