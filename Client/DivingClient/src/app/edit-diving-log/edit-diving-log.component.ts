@@ -35,7 +35,6 @@ export class EditDivingLogComponent implements OnInit {
     this.divingForm.waveHeight = this.divingForm.waveHeight.toString();
     this.divingForm.surfaceCurrent = this.divingForm.surfaceCurrent.toString();
     this.service.UpdateDivingLog(this.divingForm).subscribe(data => {
-    window.location.reload();
      alert("Actualizado");      
     })
   } 

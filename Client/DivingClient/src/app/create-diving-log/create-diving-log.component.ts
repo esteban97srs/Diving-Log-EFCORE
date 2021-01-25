@@ -31,7 +31,14 @@ export class CreateDivingLogComponent implements OnInit {
       this.diving.SurfaceCurrent = this.diving.SurfaceCurrent.toString();
       this.service.CreateDivingLog(this.diving).subscribe(data =>{
       alert("Guardado");
-      window.location.reload();
+
+      this.diving.DateLog = "";
+      this.diving.DiversNumber = "";
+      this.diving.DivingPermit = "";
+      this.diving.Observations = "";
+      this.diving.SurfaceCurrent = "";
+      this.diving.WaveHeight = "";
+      this.diving.WindDirection = "";
     })
   }
 }

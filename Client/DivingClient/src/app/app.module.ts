@@ -10,6 +10,7 @@ import { CreateDivingLogComponent } from './create-diving-log/create-diving-log.
 import { RouterModule } from '@angular/router';
 import { EditDivingLogComponent } from './edit-diving-log/edit-diving-log.component';
 import { environment } from '../environments/environment';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { environment } from '../environments/environment';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ServiceWorkerModule.register('../service-worker.js', { enabled: environment.production })
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]

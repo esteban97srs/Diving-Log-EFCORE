@@ -20,8 +20,13 @@
     "@angular/platform-browser-dynamic": "~11.0.7",
     "@angular/router": "~11.0.7",
     "@angular/service-worker": "~11.0.7",
+    "pwa": "^1.9.7",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
+    "workbox": "0.0.0",
+    "workbox-background-sync": "^6.0.2",
+    "workbox-routing": "^6.0.2",
+    "workbox-window": "^6.0.2",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
