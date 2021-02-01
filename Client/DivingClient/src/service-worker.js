@@ -14,6 +14,7 @@ workbox.precaching.precacheAndRoute([
   {url: '/index.html', revision: '0000' },
   {url: '/favicon.ico', revision: '0000' },
   {url: '/manifest.webmanifest', revision: '0000' },
+  {url: '/assets/icons/icon-144x144.png', revision: '0000' },
 ]);
 
 // BackGroundSync   Funcionamiento Offline 
