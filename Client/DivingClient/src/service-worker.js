@@ -1,10 +1,51 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.0.2/workbox-sw.js');
 
+workbox.setConfig({debug: true}) // ModoDebug
+const {Queue,BackgroundSyncPlugin} = workbox.backgroundSync;
+
+
+// Inicializacion de funcionamiento offline con cola "SyncQueue"
+const bgSyncPlugin = new BackgroundSyncPlugin('SyncQueue', {
+  maxRetentionTime: 60 * 60
+  });
+  
+// Precaching  de archivos estaticos
+workbox.precaching.precacheAndRoute([
+  {url: '/index.html', revision: '0000' },
+  {url: '/favicon.ico', revision: '0000' },
+  {url: '/manifest.webmanifest', revision: '0000' },
+]);
+
+// BackGroundSync   Funcionamiento Offline 
+
+workbox.routing.registerRoute(
+  new RegExp('https://localhost:5001/api/divings/(.*)'),
+  new workbox.strategies.NetworkOnly({
+  plugins: [ bgSyncPlugin]
+  }),
+  'POST'
+  );
+
+  workbox.routing.registerRoute(
+    new RegExp('https://localhost:5001/api/divings/(.*)'),
+    new workbox.strategies.NetworkOnly({
+    plugins: [ bgSyncPlugin]
+    }),
+    'DELETE'
+  );
+  workbox.routing.registerRoute(
+    new RegExp('https://localhost:5001/api/divings/(.*)'),
+    new workbox.strategies.NetworkOnly({
+    plugins: [ bgSyncPlugin]
+    }),
+    'PUT'
+  );
+  
 
 //Routing que almacena en cache los datos de la base de datos
 workbox.routing.registerRoute(
-  new RegExp('https://localhost:5001/api/divings/'),
-  new workbox.strategies.NetworkFirst
+  new RegExp('https://localhost:5001/api/divings/(.*)'),
+  new workbox.strategies.NetworkFirst  
   ({
       cacheName: 'Api-Data',
     }),

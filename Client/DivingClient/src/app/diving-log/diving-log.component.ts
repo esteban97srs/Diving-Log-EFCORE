@@ -21,8 +21,8 @@ export class DivingLogComponent implements OnInit {
     if(confirm("Seguro quieres eliminar el registro : "+item.id+"?")){
       var val = item.id;
       this.service.DeleteDivingLog(val).subscribe(data => {
-        this.refreshDivingList();
-      })
+      this.refreshDivingList();
+      });
     }
   }
 
